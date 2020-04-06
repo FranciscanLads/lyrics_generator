@@ -15,4 +15,4 @@ Required pip installs --> []
 2) It will save a file with the name coldplay.html
 3) Then we run coldplay_scrape.py
 4) We save the generated links in the console in an array in another python file.
-5) Now we will try to append all of these to a certaon file.
+5) Now we will try to append all of these to a certain file.
