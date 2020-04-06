@@ -118,8 +118,6 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/prospektsmarchpoppyfields.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/lost74377.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/nowmyfeetwonttouchtheground.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/hurtslikeheaven.html",
@@ -170,13 +168,9 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/birds.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/hymnfortheweekend.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/everglow.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/adventureofalifetime.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/fun.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/kaleidoscope.html",
 
@@ -186,27 +180,15 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/amazingday.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/colourspectrum.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/upup.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/allicanthinkaboutisyou.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/miraclessomeonespecial.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/aliens.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/somethingjustlikethistokyoremix.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/hypnotised.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/riseup.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/elo.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/timbuktu.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/voodoo.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/church.html",
 
@@ -232,29 +214,19 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/oldfriends.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/860882.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/championoftheworld.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/everydaylife.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/136.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/2000miles.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/aghost.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/amessage2010.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/aspellarebelyell.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/amorargentina.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/animals.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/atlas.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/bloodlessrevolution.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/brotherssisters.html",
 
@@ -267,8 +239,6 @@ links = [
 "https://www.azlyrics.com/lyrics/coldplay/christmaswiththekangaroos.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/crestofwaves.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/demsicaligera.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/deathwillneverconquer.html",
 
@@ -292,8 +262,6 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/houston.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/houston1.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/howyouseetheworldno2.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/ibloomblaum.html",
@@ -303,8 +271,6 @@ links = [
 "https://www.azlyrics.com/lyrics/coldplay/idiot.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/laddertothesun.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/miracles.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/moses.html",
 
@@ -322,8 +288,6 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/pourme.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/princessofchinainvisiblemenremix.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/proof.html",
 
 "https://www.azlyrics.com/lyrics/coldplay/sleepingsun.html",
@@ -336,17 +300,27 @@ links = [
 
 "https://www.azlyrics.com/lyrics/coldplay/thingsidontunderstand.html",
 
-"https://www.azlyrics.com/lyrics/coldplay/weallfallinlovesometimes.html",
-
-"https://www.azlyrics.com/lyrics/coldplay/wishiwashere.html",
-
 "https://www.azlyrics.com/lyrics/coldplay/yourlovemeanseverythingpart2.html"
 ]
 
 
-print(links)
+
+
+driver = None
+try:
+	driver = webdriver.Chrome()
+	action = ActionChains(driver)
+	for link in links:
+		driver.get(link)
+		driver.implicitly_wait(2)
+		content = driver.find_element_by_css_selector('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center > div:nth-child(8)').text
+		with open("coldplay_lyrics"+".txt", "a", encoding="utf8") as f:
+			f.write(content)
+finally:
+	if driver is not None:
+		driver.close
 
 
 
 
-
+	
