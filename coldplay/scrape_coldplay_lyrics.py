@@ -315,7 +315,7 @@ try:
 		driver.implicitly_wait(2)
 		content = driver.find_element_by_css_selector('body > div.container.main-page > div > div.col-xs-12.col-lg-8.text-center > div:nth-child(8)').text
 		with open("coldplay_lyrics"+".txt", "a", encoding="utf8") as f:
-			f.write(content)
+			f.write("\n"+content)
 finally:
 	if driver is not None:
 		driver.close
