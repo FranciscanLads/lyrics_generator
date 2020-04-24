@@ -1,6 +1,8 @@
 # lyrics_generator
 A TensorFlow Model that Generates Lyrics.
 
+# To just get it working run the {coldplay/top}_predictor.py file.
+
 Natural Language Processing Project.
 
 This is a mini project which tries to generate lyrics. 
